@@ -1,0 +1,193 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 23,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "TEMPERATURE",
+          "fieldMinMax": true,
+          "mappings": [],
+          "max": 1000,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 11,
+        "x": 6,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.2.0-72847",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"BACNET\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"BACnet_data\" and\n    r._field == \"temperature\" and\n    r.GatewayID == \"${GATEWAYID}\" and\n    r.MasterID == \"${MasterID}\" and\n    r.SlaveID == \"${SlaveID}\"\n  )",
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "9e:83:bc:ef:18:d6",
+          "value": "9e:83:bc:ef:18:d6"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "ednmtyxpvc6pse"
+        },
+        "definition": "from(bucket: \"BACNET\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"BACnet_data\")\n  |> group(columns: [\"GatewayID\"])\n  |> distinct(column: \"GatewayID\")\n  |> keep(columns: [\"GatewayID\"])",
+        "hide": 0,
+        "includeAll": false,
+        "label": "GATEWAY ID",
+        "multi": false,
+        "name": "GATEWAYID",
+        "options": [],
+        "query": {
+          "query": "from(bucket: \"BACNET\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"BACnet_data\")\n  |> group(columns: [\"GatewayID\"])\n  |> distinct(column: \"GatewayID\")\n  |> keep(columns: [\"GatewayID\"])"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 4,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "f6:a3:c2:8a:cb:58",
+          "value": "f6:a3:c2:8a:cb:58"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "ednmtyxpvc6pse"
+        },
+        "definition": "from(bucket: \"BACNET\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"BACnet_data\" and r[\"GatewayID\"] == \"${GATEWAYID}\")\n  |> group(columns: [\"MasterID\"])\n  |> distinct(column: \"MasterID\")\n  |> keep(columns: [\"MasterID\"])",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Master ID",
+        "multi": false,
+        "name": "MasterID",
+        "options": [],
+        "query": {
+          "query": "from(bucket: \"BACNET\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"BACnet_data\" and r[\"GatewayID\"] == \"${GATEWAYID}\")\n  |> group(columns: [\"MasterID\"])\n  |> distinct(column: \"MasterID\")\n  |> keep(columns: [\"MasterID\"])"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 4,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "2d:99:22:ce:9f:34",
+          "value": "2d:99:22:ce:9f:34"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "ednmtyxpvc6pse"
+        },
+        "definition": "from(bucket: \"BACNET\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"BACnet_data\" and r[\"MasterID\"] == \"${MasterID}\")\n  |> group(columns: [\"SlaveID\"])\n  |> distinct(column: \"SlaveID\")\n  |> keep(columns: [\"SlaveID\"])\n\n\n\n",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Slave ID",
+        "multi": false,
+        "name": "SlaveID",
+        "options": [],
+        "query": {
+          "query": "from(bucket: \"BACNET\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"BACnet_data\" and r[\"MasterID\"] == \"${MasterID}\")\n  |> group(columns: [\"SlaveID\"])\n  |> distinct(column: \"SlaveID\")\n  |> keep(columns: [\"SlaveID\"])\n\n\n\n"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "BACKNET HVAC BUILDING TEMPERATURE",
+  "uid": "ddrbdtggfylfkf",
+  "version": 11,
+  "weekStart": ""
+}
