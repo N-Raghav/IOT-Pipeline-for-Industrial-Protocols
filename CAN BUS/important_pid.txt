@@ -1,0 +1,27 @@
+Engine:
+
+Engine RPM (Revolutions Per Minute): Indicates engine speed.
+Engine Coolant Temperature: Crucial for monitoring engine health and preventing overheating.
+Manifold Absolute Pressure (MAP): Helps regulate air intake and fuel mixture.
+Mass Air Flow (MAF): Measures the amount of air entering the engine, affecting air-fuel ratio.
+Throttle Position Sensor (TPS): Indicates driver's throttle pedal input.
+Intake Air Temperature (IAT): Colder air is denser, affecting air-fuel ratio.
+Short Term Fuel Trim & Long Term Fuel Trim: Indicates adjustments made to fuel delivery for optimal performance.
+Ignition Timing: Optimizes engine performance and fuel efficiency.
+Emissions:
+
+Oxygen Sensor (O2 Sensor): Monitors exhaust oxygen levels to maintain proper air-fuel mixture.
+Fuel:
+
+Fuel System Status: Indicates any malfunctions in the fuel system.
+Fuel Pressure: Consistent pressure ensures proper fuel delivery.
+Other:
+
+Calculated Load Value: Indicates engine workload.
+Vehicle Speed Sensor (VSS): Provides data on vehicle speed.
+Status of the Malfunction Indicator Lamp (MIL): Illuminates the "check engine" light.
+
+
+
+
+

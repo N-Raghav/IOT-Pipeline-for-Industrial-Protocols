@@ -1,0 +1,1864 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 20,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Engine speed refers to the rate at which an engine's crankshaft is rotating. It's typically measured in revolutions per minute (RPM). This tells you how many times the engine's crankshaft completes one full rotation in one minute",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Engine speed",
+          "mappings": [],
+          "max": 16383.75,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "rotrpm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Engine_RPM\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Engine speed",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "VEHICLE SPEED",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "velocitykmh"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 3,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Vehicle_Speed\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Vehicle speed",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Engine coolant temperature",
+          "mappings": [],
+          "max": 215,
+          "min": -40,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 8,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Engine_Coolant_Temperature\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Engine coolant temperature",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Intake air temperature",
+          "mappings": [],
+          "max": 215,
+          "min": -40,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 13,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Intake_Air_Temperature\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Intake air temperature",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Mass air flow sensors measure the air mass flowing into the engine intake. This is important for calculating the amount of fuel to add to achieve the proper air-fuel ration ",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#eeb75e",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "MAS AIR FLOW RATE",
+          "mappings": [],
+          "max": 655.35,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "g/s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 17,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Mass_Air_Flow_Rate\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "MAS AIR FLOW RATE",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Ignition timing is measured in degrees of a crankshaft rotation before top dead center (BDTC). Spark plugs need to fire at the right time, which can be achieved by advancing or retarding the timing of the engine. Timing advance means that the spark plugs are firing earlier in the compression stroke, farther from TDC(TOP DEAD CENTER)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "displayName": "Timing Advance",
+          "mappings": [],
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "degree"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 21,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Timing_advance\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Timing Advance",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "In a motor vehicle the control used by the driver to regulate power is sometimes called the throttle, accelerator, or gas pedal. For a gasoline engine, the throttle most commonly regulates the amount of air and fuel allowed to enter the engine",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "orange",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Throttle position",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-orange",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "%"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Throttle_Position\")\r\n\r\n\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Throttle position",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Short-term fuel trims occur as a direct result of changes in the oxygen content of the exhaust stream. The exhaust stream is monitored by an oxygen sensor upstream of the catalytic converter, and the signal voltage it generates is directly proportional to the oxygen content of the exhaust stream. During normal operation of the vehicle, and provided the oxygen sensor is in closed loop operation, the ECU will react to changes in the composition of the exhaust stream almost instantly, hence the term, “short term fuel trim”, and it will do so several times per second.\n\nThe short-term fuel trim's purpose is to either add or subtract fuel based on how the engine is running",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#7f28ab",
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [],
+          "max": 99,
+          "min": -100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#712895",
+                "value": null
+              },
+              {
+                "color": "#a124f930",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "%"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Short_Term_Fuel_Trim_-_Bank_1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "STFT BANK 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Short_Term_Fuel_Trim_-_Bank_2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "STFT BANK 2"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 8,
+        "y": 4
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) =>  (r._field == \"Short_Term_Fuel_Trim_-_Bank_1\" or r._field == \"Short_Term_Fuel_Trim_-_Bank_2\") )\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "STFT",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#3374f882",
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [],
+          "max": 1.275,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "volt"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_1__A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_2_A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 2"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_3__A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 3"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_4__A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 4"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_5__A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 5"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_6__A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 6"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_7__A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 7"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oxygen_Sensor_8__A:_Voltage_B:_Short_term_fuel_trim"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "OXYGEN SENSOR 8"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 10,
+        "x": 14,
+        "y": 4
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 12,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => ( r._field == \"Oxygen_Sensor_1__A:_Voltage_B:_Short_term_fuel_trim\" or\r\n  r._field == \"Oxygen_Sensor_2_A:_Voltage_B:_Short_term_fuel_trim\"  or\r\n  r._field == \"Oxygen_Sensor_3__A:_Voltage_B:_Short_term_fuel_trim\" or\r\n  r._field == \"Oxygen_Sensor_4__A:_Voltage_B:_Short_term_fuel_trim\" or\r\n  r._field == \"Oxygen_Sensor_5__A:_Voltage_B:_Short_term_fuel_trim\" or\r\n  r._field == \"Oxygen_Sensor_6__A:_Voltage_B:_Short_term_fuel_trim\" or\r\n  r._field == \"Oxygen_Sensor_7__A:_Voltage_B:_Short_term_fuel_trim\" or\r\n  r._field == \"Oxygen_Sensor_8__A:_Voltage_B:_Short_term_fuel_trim\" )\r\n)\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Oxygen sensors",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Distance Travelled",
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "lengthkm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 3,
+        "y": 6
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Distance_Travelled_with_MIL_on\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Distance Travelled",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Engine load is essentially answering the question of how much air is going into the cylinder per combustion event relative to how much air it would ingest",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Engine load",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-purple",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Engine_Load\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Engine load",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Long-term fuel trims are measured over longer time intervals by oxygen -, or air fuel ratio sensors downstream of the catalytic converter, and in practice, the signal voltages these sensors generate are not directly implicated in fuel delivery strategies, although there some exceptions to this rule\nlong-term fuel trim adds or subtracts fuel based on a trend the ECM sees",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [],
+          "max": 99,
+          "min": -100,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#f733d8",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "%"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Long_Term_Fuel_Trim_-_Bank_1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "LTFT TANK 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Long_Term_Fuel_Trim_-_Bank_2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "LTFT TANK 2"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 8,
+        "y": 9
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => (r._field == \"Long_Term_Fuel_Trim_-_Bank_1\" or r._field == \"Long_Term_Fuel_Trim_-_Bank_2\") )\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "LTFT",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "The EVAP system is designed to stop fuel system fumes from leaking directly into the atmosphere",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#00ff92",
+            "mode": "continuous-RdYlGr"
+          },
+          "displayName": "EVAP",
+          "mappings": [],
+          "max": 8191.75,
+          "min": -8192,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "pressurepa"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 12
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Evaporative_System_Vapor_Pressure\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Evaporative System Vapor Pressure",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Manifold Pressure (MP) refers to the air pressure within the engine's intake manifold. Essentially, it measures the air pressure available to draw into the cylinders during the intake phase",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "continuous-RdYlGr"
+          },
+          "displayName": "Intake Manifold Pressure",
+          "mappings": [],
+          "max": 255,
+          "min": 0,
+          "noValue": "No Data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "pressurekpa"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 12
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Intake_Manifold_Pressure\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Intake Manifold Pressure",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "a catalytic converter filters out harmful byproducts in the exhaust gases and burns them up. And while the main function of a catalytic converter is to reduce harmful emissions, it also improves your car's efficiency.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#862b8e",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "max": 6513.5,
+          "min": -40,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Catalyst_Temperature_Bank_1:_Sensor_1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Catalyst Temperature 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Catalyst_Temperature_Bank_2:_Sensor_1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Catalyst Temperature 2"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 8,
+        "y": 14
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) =>  (r._field == \"Catalyst_Temperature_Bank_1:_Sensor_1\" or r._field ==  \"Catalyst_Temperature_Bank_2:_Sensor_1\") )\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Catalyst Temperature",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#9a0a92",
+            "mode": "continuous-RdYlGr"
+          },
+          "displayName": "Fuel pressure",
+          "mappings": [],
+          "max": 765,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "pressurekpa"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 17
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Fuel_Pressure\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Fuel pressure",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Barometric pressure",
+          "mappings": [],
+          "max": 255,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "atm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 17
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Barometric_Pressure\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Barometric pressure",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "The throttle actuator is usually a DC motor that helps rotate certain parts precisely and efficiently\n\nActuators work behind the scenes in vehicles to convert energy into a physical action or force. They perform a variety of performance and convenience functions, from controlling the throttle to directing airflow in the climate control system, and operating power seats and liftgates",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Commanded Throttle Actuator",
+          "mappings": [],
+          "max": 101,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "%"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 8,
+        "y": 20
+      },
+      "id": 21,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) =>  r._field == \"Commanded_Throttle_Actuator\" )\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Commanded Throttle Actuator ",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Control Module Voltage is the battery voltage, minus any volts drop in the wiring between the battery and the ECU",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "continuous-RdYlGr"
+          },
+          "displayName": "Control Module Voltage",
+          "mappings": [],
+          "max": 65.535,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "volt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 12,
+        "y": 20
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Control_Module_Voltage\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Control Module Voltage",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "Exhaust gas recirculation (EGR) is an effective strategy to control NOx emissions from diesel engines. The EGR reduces NOx through lowering the oxygen concentration in the combustion chamber, as well as through heat absorption.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "displayName": "Commanded EGR",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "noValue": "NO DATA",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 16,
+        "y": 20
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\r\n  |> range(start: -5m)\r\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\r\n  |> filter(fn: (r) => r._field == \"Commanded_EGR\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Commanded EGR",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 20,
+        "y": 20
+      },
+      "id": 22,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "Detailed plots",
+          "url": "https://nraghav.grafana.net/public-dashboards/4c49c443d33a4dbf8b541aa7a2f88d08?orgId=1&refresh=auto"
+        }
+      ],
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<img src=\"https://www.most2414.com/wp-content/uploads/2019/04/Most2414-Services-Digital-Strategy-KPI-Business-Intelligence-1.0.png\" alt=\"No image\" width=\"200\" height=\"150\">\n<h4 style=\"color:white\">\n  CLICK HERE FOR  EXTENSIVE \n  <br>\n  VISUALIZATION\n</h4>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.0-72125",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "ednmtyxpvc6pse"
+      },
+      "description": "The fuel system status in a vehicle typically refers to the condition and operation of the components responsible for storing, delivering, and managing fuel to the engine. This includes the fuel tank, fuel pump, fuel lines, fuel injectors (or carburetor), fuel filter, and sometimes fuel pressure regulators and sensors",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#f4ff00",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "eq",
+                "reducer": "last",
+                "value": 0
+              }
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "The motor is off"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "eq",
+                "reducer": "lastNotNull",
+                "value": 1
+              }
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Open loop due to insufficient engine temperature"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "eq",
+                "reducer": "lastNotNull",
+                "value": 2
+              }
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Closed loop, using oxygen sensor feedback to determine fuel mix"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "eq",
+                "reducer": "lastNotNull",
+                "value": 4
+              }
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Open loop due to engine load OR fuel cut due to deceleration"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "eq",
+                "reducer": "lastNotNull",
+                "value": 8
+              }
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Open loop due to system failure"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "eq",
+                "reducer": "lastNotNull",
+                "value": 16
+              }
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Closed loop, using at least one oxygen sensor but there is a fault in the feedback system"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 22
+      },
+      "id": 23,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-72125",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ednmtyxpvc6pse"
+          },
+          "query": "from(bucket: \"CAN\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r._measurement == \"Can_data\" and r.Gateway_id == \"${GATEWAY}\")\n  |> filter(fn: (r) => r._field == \"Fuel_System_Status_\")\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Fuel System Status",
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "ednmtyxpvc6pse"
+        },
+        "definition": "from(bucket: \"CAN\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Can_data\")\n  |> group(columns: [\"Gateway_id\"])\n  |> distinct(column: \"Gateway_id\")\n  |> keep(columns: [\"Gateway_id\"])",
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "GATEWAY ID",
+        "multi": false,
+        "name": "GATEWAY",
+        "options": [],
+        "query": {
+          "maxDataPoints": 1000,
+          "query": "from(bucket: \"CAN\")\n  |> range(start: -1d)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Can_data\")\n  |> group(columns: [\"Gateway_id\"])\n  |> distinct(column: \"Gateway_id\")\n  |> keep(columns: [\"Gateway_id\"])",
+          "refId": "InfluxVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "CAN OBD2 SIMULATOR DATA ANALYSIS",
+  "uid": "ddnmvanaq0feob",
+  "version": 114,
+  "weekStart": "monday"
+}

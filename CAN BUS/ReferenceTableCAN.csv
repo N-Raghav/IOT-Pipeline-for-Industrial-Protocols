@@ -1,0 +1,33 @@
+﻿PID,Parameter name,Bytes,Units
+13,Vehicle Speed,1,km/h
+12,Engine RPM,2,rpm
+4,Engine Load,1,%
+17,Throttle Position,1,%
+3,Fuel System Status ,2,NA
+6,Short Term Fuel Trim - Bank 1,1,%
+7,Long Term Fuel Trim - Bank 1,1,%
+8,Short Term Fuel Trim - Bank 2,1,%
+9,Long Term Fuel Trim - Bank 2,1,%
+20,Oxygen Sensor 1  A: Voltage B: Short term fuel trim,2,Volts
+21,Oxygen Sensor 2 A: Voltage B: Short term fuel trim,2,Volts
+22,Oxygen Sensor 3  A: Voltage B: Short term fuel trim,2,Volts
+23,Oxygen Sensor 4  A: Voltage B: Short term fuel trim,2,Volts
+24,Oxygen Sensor 5  A: Voltage B: Short term fuel trim,2,Volts
+25,Oxygen Sensor 6  A: Voltage B: Short term fuel trim,2,Volts
+26,Oxygen Sensor 7  A: Voltage B: Short term fuel trim,2,Volts
+27,Oxygen Sensor 8  A: Voltage B: Short term fuel trim,2,Volts
+11,Intake Manifold Pressure,1,kPa
+15,Intake Air Temperature,1,degreeC
+16,Mass Air Flow Rate,2,g/s
+5,Engine Coolant Temperature,1,degreeC
+14,Timing advance,1,degrees
+10,Fuel Pressure,1,kPa
+60,Catalyst Temperature Bank 1: Sensor 1,2,degreeC
+61,Catalyst Temperature Bank 2: Sensor 1,2,degreeC
+50,Evaporative System Vapor Pressure,2,Pa
+51,Barometric Pressure,1,kPa
+66,Control Module Voltage,2,Volts
+44,Commanded EGR,1,%
+76,Commanded Throttle Actuator,1,%
+33,Distance Travelled with MIL on,2,km
+

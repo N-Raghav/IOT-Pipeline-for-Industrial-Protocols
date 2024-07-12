@@ -1,0 +1,32 @@
+Parameter Name,Value,Units
+Vehicle Speed,144.0,km/h
+Engine RPM,7440.5,rpm
+Engine Load,20.784313739,%
+Throttle Position,18.431372561,%
+Fuel System Status ,2.0,
+Short Term Fuel Trim - Bank 1,-20.3125,%
+Long Term Fuel Trim - Bank 1,-21.875,%
+Short Term Fuel Trim - Bank 2,-89.84375,%
+Long Term Fuel Trim - Bank 2,-84.375,%
+Oxygen Sensor 1  A: Voltage B: Short term fuel trim,0.615,Volts
+Oxygen Sensor 2 A: Voltage B: Short term fuel trim,0.885,Volts
+Oxygen Sensor 3  A: Voltage B: Short term fuel trim,0.6950000000000001,Volts
+Oxygen Sensor 4  A: Voltage B: Short term fuel trim,0.64,Volts
+Oxygen Sensor 5  A: Voltage B: Short term fuel trim,0.21,Volts
+Oxygen Sensor 6  A: Voltage B: Short term fuel trim,0.16,Volts
+Oxygen Sensor 7  A: Voltage B: Short term fuel trim,0.215,Volts
+Oxygen Sensor 8  A: Voltage B: Short term fuel trim,0.04,Volts
+Intake Manifold Pressure,209.0,kPa
+Intake Air Temperature,150.0,degreeC
+Mass Air Flow Rate,296.2,g/s
+Engine Coolant Temperature,162.0,degreeC
+Timing advance,21.5,degrees
+Fuel Pressure,468.0,kPa
+Catalyst Temperature Bank 1: Sensor 1,4156.400000000001,degreeC
+Catalyst Temperature Bank 2: Sensor 1,2273.5,degreeC
+Evaporative System Vapor Pressure,12635.25,Pa
+Barometric Pressure,148.0,kPa
+Control Module Voltage,28.493000000000002,Volts
+Commanded EGR,7.843137260000001,%
+Commanded Throttle Actuator,81.960784367,%
+Distance Travelled with MIL on,8360.0,km
